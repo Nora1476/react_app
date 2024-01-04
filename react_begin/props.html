@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!--타입 설정-->
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function Btn({ text, changeValue }) {
+      return (
+        <button onClick={changeValue} style={{ backgroundColor: "tomato", color: "white", padding: "10px 20px", border: 0, borderRadius: 10, fontSize: 20 }}>
+          {text}
+        </button>
+      );
+    }
+
+    //컴포넌트로 넘어가는 props타입 설정
+    const MemorizedBtn = React.memo(Btn);
+    MemorizedBtn.propTypes = {
+      text: PropTypes.string.isRequired,//필수 설정
+    };
+
+    function App() {
+      const [value, setValue] = React.useState("Save Change");
+      const changeValue = () => setValue("Revert Change");
+      return (
+        <div>
+          <MemorizedBtn text={value} changeValue={changeValue} />
+          <MemorizedBtn text={22} />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</html>
