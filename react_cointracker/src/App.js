@@ -10,13 +10,13 @@ function App() {
   const [trans, setTrans] = useState(0);
 
   const onChange = (e) => {
-    const str = e.target.value;
+    const str = e.target.value; //select를 통해 배열로 받아온 값
     const coinArr = str.split(","); //첫번째요소:가격, 두번쨰요소:symbol
-
-    const symbol = coinArr[1];
     const price = coinArr[0];
-    setName(symbol);
-    setCoinPrice(price);
+    const symbol = coinArr[1];
+
+    setCoinPrice(price); //코인가격
+    setName(symbol); //코인명 세팅
 
     if (myMoney > 0) setTrans((myMoney / price).toFixed(3));
   };
@@ -45,7 +45,7 @@ function App() {
           <select onChange={onChange}>
             <option>선택하세요.</option>
             {coins.map((coin, index) => (
-              //옵션 값2개를 가격, symbol 형태배열로 받음
+              //옵션 값2개를 가격, symbol 배열로 받음
               <option key={index} value={[coin.quotes.USD.price, coin.symbol]}>
                 {coin.name} ({coin.symbol}) : {Math.round(coin.quotes.USD.price * 10) / 10}USD
               </option>
