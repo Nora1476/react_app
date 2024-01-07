@@ -1,13 +1,10 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 
-function Movie({ id, coverImg, title, summary, genres }) {
+function SelectedMovie({ coverImg, title, summary, genres }) {
   return (
     <div>
       <img src={coverImg} alt="img" />
-      <h2>
-        <Link to={`/movie/${id}`}>{title}</Link>
-      </h2>
+      <h2>{title}</h2>
       <p>{summary === "" ? "(no summary)" : summary}</p>
       {genres == null ? ( //장르 배열이 존재하는지 확인
         ""
@@ -18,12 +15,11 @@ function Movie({ id, coverImg, title, summary, genres }) {
           ))}
         </ul>
       )}
-      <hr />
     </div>
   );
 }
 
-Movie.prototype = {
+SelectedMovie.prototype = {
   id: PropTypes.number.isRequired,
   coverImg: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -31,4 +27,4 @@ Movie.prototype = {
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-export default Movie;
+export default SelectedMovie;
