@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Movie from "../components/movie";
+import styles from "./Home.module.css";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -18,14 +19,14 @@ function Home() {
   // console.log(movies);
 
   return (
-    <div>
+    <div className={styles.container}>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div>
+        <div className={styles.movies}>
           {movies.map((item) => (
             //movie 정보 담은 컴포넌트 파일(파라미터로 정보 넘김)
-            <Movie key={item.id} id={item.id} coverImg={item.medium_cover_image} title={item.title} summary={item.summary} genres={item.genres} />
+            <Movie key={item.id} id={item.id} coverImg={item.medium_cover_image} year={item.year} title={item.title} summary={item.summary} genres={item.genres} />
           ))}
         </div>
       )}
