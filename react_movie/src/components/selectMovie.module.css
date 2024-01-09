@@ -1,3 +1,39 @@
-li {
-  text-decoration: none;
+.detail {
+  max-width: 800px;
+  margin-top: 100px;
+}
+
+.d_top {
+  display: flex;
+  justify-content: space-between;
+}
+.d_top .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.d_top .left > h2 {
+  padding: 20px 40px;
+  white-space: nowrap;
+}
+.poster {
+  max-width: 300px;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.info > li {
+  display: flex;
+  list-style: none;
+}
+
+.d_btm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 40px;
 }

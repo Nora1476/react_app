@@ -13,6 +13,7 @@ function Detail() {
 
     setMovie(json.data.movie);
     setLoading(false);
+    console.log(json.data.movie);
   }, [id]);
   useEffect(() => {
     getMovie();
@@ -26,7 +27,16 @@ function Detail() {
       ) : (
         <div>
           <h1 className={styles.title}>Movie Detail</h1>
-          <SelectedMovie key={movie.id} coverImg={movie.medium_cover_image} title={movie.title} summary={movie.description_full} genres={movie.genres} />
+          <SelectedMovie
+            key={movie.id}
+            coverImg={movie.large_cover_image}
+            title={movie.title}
+            year={movie.date_uploaded}
+            summary={movie.description_full}
+            genres={movie.genres}
+            rating={movie.rating}
+            runtime={movie.runtime}
+          />
         </div>
       )}
     </div>
