@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import SelectedMovie from "../components/selectMovie";
+import styles from "./Detail.module.css";
 
 function Detail() {
   const [loading, setLoading] = useState(true);
@@ -19,12 +20,12 @@ function Detail() {
   // console.log(movie);
 
   return (
-    <div>
-      <h1>Movie Detail</h1>
+    <div className={styles.container}>
       {loading ? (
         <h2>loading..</h2>
       ) : (
         <div>
+          <h1 className={styles.title}>Movie Detail</h1>
           <SelectedMovie key={movie.id} coverImg={movie.medium_cover_image} title={movie.title} summary={movie.description_full} genres={movie.genres} />
         </div>
       )}
